@@ -4,7 +4,7 @@ This repository is to represent how easy to design a web app using the Streamlit
 Here, you will find simple examples that you can learn from how to implement Streamlit widgets in your web app.
 
 ## Image and Histogram: [**[Code]**](https://github.com/OmarAlkousa/Learn-Streamlit/blob/main/Image_and_Histogram/app.py)
-This simple web app lets you import RGB images and represent its histogram.
+This simple web app lets you import RGB images and represent their histogram.
 
 ### In this web app, you will learn your streamlit way with:
 - Using markdown language that is easy to manipulate texts.
