@@ -71,6 +71,7 @@ if uploaded_file is not None:
     #####################
     # Display Histogram #
     #####################
+    # This code snippet is credited to the author/s of Imshow in python documentation (https://plotly.com/python/imshow/)
     fig2 = make_subplots(1, 1)
     # Histogram for each color channel
     for channel, color in enumerate(['red', 'green', 'blue']):
