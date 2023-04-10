@@ -18,7 +18,7 @@ signal_type, properties, signal = select_signal.select()
 #####################################
 # Download the signal as a CSV file #
 #####################################
-download_signal.convert_signal(signal=signal)
+download_signal.download(signal=signal)
 
 #################
 # Visualization #
