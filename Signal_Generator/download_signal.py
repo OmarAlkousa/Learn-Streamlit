@@ -4,7 +4,7 @@ import numpy as np
 import io
 
 
-def convert_signal(signal, filename='signal.csv'):
+def download(signal, filename='signal.csv'):
     # Create an in-memory buffer
     with io.BytesIO() as buffer:
         # Write array to buffer
