@@ -1,5 +1,6 @@
 # Import the required packages
 import numpy as np
+from scipy.signal import chirp
 
 
 # Building a class Signal for better use.
@@ -14,7 +15,7 @@ class Signal:
       cosine = signal.cosine()
     """
 
-    def __init__(self, amplitude=1, frequency=1, duration=1, sampling_rate=100.0, phase=0):
+    def __init__(self, amplitude=1, duration=1, sampling_rate=100.0, phase=0):
         """
         Initialize the Signal class.
 
@@ -33,7 +34,6 @@ class Signal:
                                   for better representation of the signal.
         """
         self.amplitude = amplitude
-        self.frequency = frequency
         self.duration = duration
         self.sampling_rate = sampling_rate
         self.phase = phase
@@ -41,7 +41,7 @@ class Signal:
         self.time_axis = np.arange(0, self.duration, self.time_step)
 
     # Generate sine wave
-    def sine(self):
+    def sine(self, frequency=1.0):
         """
         Method of Signal
 
@@ -49,10 +49,10 @@ class Signal:
             np.array of sine wave using the pre-defined variables (amplitude,
             frequency, time_axis, and phase)
         """
-        return self.amplitude*np.sin(2*np.pi*self.frequency*self.time_axis+self.phase)
+        return self.amplitude*np.sin(2*np.pi*frequency*self.time_axis+self.phase)
 
     # Generate cosine wave
-    def cosine(self):
+    def cosine(self, frequency=1.0):
         """
         Method of Signal
 
@@ -60,4 +60,13 @@ class Signal:
             np.array of cosine wave using the pre-defined variables (amplitude,
             frequency, time_axis, and phase)
         """
-        return self.amplitude*np.cos(2*np.pi*self.frequency*self.time_axis+self.phase)
+        return self.amplitude*np.cos(2*np.pi*frequency*self.time_axis+self.phase)
+
+    def chrip_signal(self, frequency_start=1, frequency_end=10, method='linear', vertex=True):
+        return self.amplitude*chirp(t=self.time_axis,
+                                    f0=frequency_start,
+                                    f1=frequency_end,
+                                    t1=self.duration,
+                                    method=method,
+                                    phi=self.phase*(180/np.pi),
+                                    vertex_zero=vertex)
