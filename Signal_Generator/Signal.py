@@ -2,6 +2,7 @@
 import numpy as np
 from scipy.signal import chirp
 from scipy.signal import square
+from scipy.signal import sawtooth
 
 
 # Building a class Signal for better use.
@@ -93,7 +94,23 @@ class Signal:
         """
         Method of Signal
 
+        Args:
+            frequency (float): The frequency of the signal [Hz]
+
         Returns:
-            np.array of quare wave using the pre-defined variables
+            np.array of square wave using the pre-defined variables
         """
         return self.amplitude*square(2 * np.pi * frequency * self.time_axis)
+
+    # Generate sawtooth wave
+    def sawtooth_signal(self, frequency=1.0):
+        """
+        Method of Signal
+
+        Args:
+            frequency (float): The frequency of the signal [Hz]
+
+        Returns:
+            np.array of sawtooth wave using the pre-defined variables
+        """
+        return self.amplitude*sawtooth(2*np.pi*frequency*self.time_axis)

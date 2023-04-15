@@ -10,7 +10,8 @@ def select():
     ########################
     # Select the type of the signal
     select_signal = st.selectbox(label='What type of signal you want to generate',
-                                 options=['sine', 'cosine', 'chirp', 'square'],
+                                 options=['sine', 'cosine',
+                                          'chirp', 'square', 'sawtooth'],
                                  key='s_select_signal')
     # Specify the sampling rate of the signal in Hz
     sampling_rate = st.number_input(
@@ -52,7 +53,7 @@ def select():
                                 It determines whether the vertex of the parabola that is the graph of the frequency is at t=0 or t=t1")
 
     # Parameters for sine/cosine signals
-    elif select_signal == 'square':
+    elif select_signal in ['square', 'sawtooth']:
         # Specify the frequency of the signal in Hz
         frequency = st.number_input(
             label='Frequency [Hz]', value=1.0, key='n_frequency_square')
@@ -77,5 +78,7 @@ def select():
     # Square signal
     elif select_signal == 'square':
         signal = sig.square_signal(frequency=frequency)
+    elif select_signal == 'sawtooth':
+        signal = sig.sawtooth_signal(frequency=frequency)
 
     return select_signal, sig, signal
