@@ -3,6 +3,7 @@ import numpy as np
 from scipy.signal import chirp
 from scipy.signal import square
 from scipy.signal import sawtooth
+from scipy.signal import sweep_poly
 
 
 # Building a class Signal for better use.
@@ -114,3 +115,17 @@ class Signal:
             np.array of sawtooth wave using the pre-defined variables
         """
         return self.amplitude*sawtooth(2*np.pi*frequency*self.time_axis)
+
+    # Generate sweep poly signal
+    def poly_signal(self, poly=np.poly1d(list(np.linspace(0, 1, num=4))), phase=0):
+        """
+        Method of Signal
+
+        Args:
+            poly (list): List of the polynomial coefficients.
+
+        Returns:
+            np.array of sweep poly signal using the pre-defined variables
+        """
+
+        return self.amplitude*sweep_poly(t=self.time_axis, poly=poly, phi=phase*(180/np.pi))
